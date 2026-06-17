@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: #fff;">
+    <h1>AMAZING IMAGE</h1>
+    <ul id="item">
+  <li id="item1" class="list-item">
+    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d" alt="Image 1" width="150">
+  </li>
+  <li id="item2" class="list-item">
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Image 2" width="150">
+  </li>
+  <li id="item3" class="list-item">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Image 3"  width="150">
+  </li>
+  <li id="item4" class="list-item">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" alt="Image 4" width="150">
+  </li>
+  <li id="item5" class="list-item">
+    <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7" alt="Image 5" width="150">
+  </li>
+</ul>
+
+
+</body>
+<script>
+    //y approach bhi jyda acchi nhi h 
+    // document.getElementById('item5').onclick=function(){
+    //     alert('image5 clicked');
+    // }
+    //y h best approach
+    document.getElementById('item5').addEventListener('click',function(){
+       // alert('item5 clicked');
+    },false)
+    //type ,timestamp, defaultprevented,target,toelement,srcelement,currenttarget,
+    //clientX,clientY,screenX,screeny
+    document.getElementById('item').addEventListener('click',function(){
+      //  console.log("item clicked");
+    },false);
+    //false bubbling phase btata h bottom->top jata h
+    //true current phase btata h top->bottom jata h
+    document.getElementById('item5').addEventListener('click',function(e){
+        //console.log("itme5 is clicked");
+        e.stopPropagation();//y ab propogation rok dega
+    },false)
+
+    //exercise
+    document.querySelector('#item').addEventListener('click',function(e){
+        console.log(e.target.parentNode)
+        let removeit=e.target.parentNode;
+        removeit.remove();
+    })
+</script>
+</html>
